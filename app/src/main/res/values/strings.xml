@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Nav_hospital</string>
+    <string name="title_activity_maps2">Map</string>
+    <string name="find_nearby_hospitals">Find nearby hospitals</string>
+    <string name="search_location_by_distance">Search Location by Distance</string>
+    <string name="search_hospital_by_distance">Search Hospital by Distance</string>
+</resources>
