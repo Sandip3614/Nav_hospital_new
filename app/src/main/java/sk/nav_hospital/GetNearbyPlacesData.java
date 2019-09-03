@@ -16,6 +16,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.List;
 
@@ -69,11 +70,12 @@ class GetNearbyPlacesData extends AsyncTask<Object, String, Cursor> {
 
             double distance = algorithm.Haversine(latitude, longitude, lat, lng);
 
-            if(distance < algorithm.NEAR_BY_DISTANCE) {
+            if((int)distance < algorithm.NEAR_BY_DISTANCE) {
 
                 LatLng latLng = new LatLng(lat, lng);
                 markerOptions.position(latLng);
                 markerOptions.title(placeName + ":" + vicinity);
+                markerOptions.snippet("Distance: "+new DecimalFormat("##.##").format(distance/1000)+" km");
                 markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
                 mMap.addMarker(markerOptions);
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
