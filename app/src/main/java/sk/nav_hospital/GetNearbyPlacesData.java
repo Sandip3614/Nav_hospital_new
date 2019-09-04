@@ -70,12 +70,14 @@ class GetNearbyPlacesData extends AsyncTask<Object, String, Cursor> {
 
             double distance = algorithm.Haversine(latitude, longitude, lat, lng);
 
-            if((int)distance < algorithm.NEAR_BY_DISTANCE) {
+            if(distance < algorithm.NEAR_BY_DISTANCE) {
 
                 LatLng latLng = new LatLng(lat, lng);
                 markerOptions.position(latLng);
-                markerOptions.title(placeName + ":" + vicinity);
+                markerOptions.title(placeName);
                 markerOptions.snippet("Distance: "+new DecimalFormat("##.##").format(distance/1000)+" km");
+                markerOptions.snippet("Adress: "+ vicinity);
+                
                 markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
                 mMap.addMarker(markerOptions);
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
@@ -90,6 +92,8 @@ class GetNearbyPlacesData extends AsyncTask<Object, String, Cursor> {
             }
         }
     }
+
+
 
 
 
